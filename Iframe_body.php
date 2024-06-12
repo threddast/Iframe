@@ -218,7 +218,7 @@ class Iframe {
     if (!empty($phost)) $phost .= '.';
     #
     $page   = (array_key_exists('path',  $argv) ? $argv['path']  : '');
-    $url    = $wgIframe['server'][$key]['scheme'] . '://' . $phost .  $wgIframe['server'][$key]['domain'] . '/';
+    $url    = $wgIframe['server'][$key]['scheme'] . '://';
     $page   = parse_url ($page);
     $furl   = $url . $page['path'];
     if (array_key_exists('query', $page)) {
