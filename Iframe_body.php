@@ -219,17 +219,7 @@ class Iframe {
     #
     $page   = (array_key_exists('path',  $argv) ? $argv['path']  : '');
     $url    = $wgIframe['server'][$key]['scheme'] . '://';
-    $page   = parse_url ($page);
-    $furl   = $url . $page['path'];
-    if (array_key_exists('query', $page)) {
-      parse_str($page['query'], $queries);
-      $qarr = array();
-      foreach ($queries as $key => $value) array_push($qarr, htmlentities($key) . '=' . htmlentities($value));
-      $furl .= '?' . implode('&', $qarr);
-    }
-    if (array_key_exists('fragment', $page)) {
-      $furl .= '#' . htmlentities($page['fragment']);
-    }
+    $furl   = $url . $page;
     $id = 'Iframe' . $parser->Iframe['no'];
     if ($wgIframe['delay']<0) {
       $output = '<iframe id="' . $id . '" src="' . $furl . '" width="'. $width .'" height="'. $height .'" frameborder="0" '. $allowfullscreen .' ></iframe>';
